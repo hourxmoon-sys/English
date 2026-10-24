@@ -2,11 +2,12 @@ import streamlit as st
 from sm_2 import Scheduler, Card
 import datetime
 
-# تهيئة الجدولة في حالة الجلسة لتجنب إعادة التعيين
+# --- بداية التهيئة الآمنة ---
 if "scheduler" not in st.session_state:
     st.session_state.scheduler = Scheduler()
 if "flashcards" not in st.session_state:
-    st.session_state.flashcards = []  # قائمة من القواميس {front, back, card_obj}
+    st.session_state.flashcards = []
+# --- نهاية التهيئة الآمنة ---
 
 def add_flashcard(front: str, back: str):
     """إضافة بطاقة جديدة إلى النظام."""
